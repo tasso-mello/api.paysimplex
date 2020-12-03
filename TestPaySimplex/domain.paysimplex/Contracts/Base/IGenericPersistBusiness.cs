@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace domain.paysimplex.Contracts.Base
+﻿namespace domain.paysimplex.Contracts.Base
 {
-	public interface IGenericPersistBusiness<TEntity> where TEntity : class
-	{
-		object Save(TEntity obj, long idUser);
-		object Update(TEntity obj, long idUser);
-		object Delete(TEntity obj);
-	}
+    using System.Threading.Tasks;
+
+    public interface IGenericPersistBusiness<TEntity> where TEntity : class
+    {
+        Task<object> Save(TEntity obj, long idUser);
+        Task<object> Update(TEntity obj, long idUser);
+        Task<object> Delete(TEntity obj);
+    }
 }

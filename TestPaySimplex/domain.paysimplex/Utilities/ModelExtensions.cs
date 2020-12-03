@@ -1,8 +1,6 @@
 ﻿namespace domain.paysimplex.Utilities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using domain.paysimplex.Enums;
 
     public static class ModelExtensions
     {
@@ -38,7 +36,7 @@
                 Title = task.Title,
                 Start = task.Start,
                 End = task.End,
-                State = task.State,
+                State = (State)task.State,
                 UserId = task.UserId,
                 File = task.File,
                 User = task.User?.ToModelUser()
@@ -54,7 +52,7 @@
                 Title = task.Title,
                 Start = task.Start,
                 End = task.End,
-                State = task.State,
+                State = (int)task.State,
                 UserId = task.UserId,
                 File = task.File
             };

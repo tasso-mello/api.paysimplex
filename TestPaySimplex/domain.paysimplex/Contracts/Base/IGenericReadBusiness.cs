@@ -1,9 +1,11 @@
 ﻿namespace domain.paysimplex.Contracts.Base
 {
-	public interface IGenericReadBusiness<TEntity> where TEntity : class
-	{
-		object Get();
-		object GetById(long id);
-		object GetByName(string name);
-	}
+    using System.Threading.Tasks;
+
+    public interface IGenericReadBusiness<TEntity> where TEntity : class
+    {
+        Task<object> Get();
+        Task<object> GetById(long id);
+        Task<object> GetByName(string name);
+    }
 }

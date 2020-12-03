@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api.playsimplex", "api.playsimplex\api.playsimplex.csproj", "{85CFF171-39CA-47CD-BD69-BF527EDC0297}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain.paysimplex", "domain.paysimplex\domain.paysimplex.csproj", "{138DACEB-AB4B-450E-A25A-4E2FF4DDB2E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data.paysimplex", "data.paysimplex\data.paysimplex.csproj", "{24927F45-53D4-4237-AFC3-CE23D2F7A0DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api.paysimplex", "api.paysimplex\api.paysimplex.csproj", "{B7A898E1-8CB8-4859-BA02-3F4C0581CD03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{85CFF171-39CA-47CD-BD69-BF527EDC0297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85CFF171-39CA-47CD-BD69-BF527EDC0297}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85CFF171-39CA-47CD-BD69-BF527EDC0297}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85CFF171-39CA-47CD-BD69-BF527EDC0297}.Release|Any CPU.Build.0 = Release|Any CPU
 		{138DACEB-AB4B-450E-A25A-4E2FF4DDB2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{138DACEB-AB4B-450E-A25A-4E2FF4DDB2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{138DACEB-AB4B-450E-A25A-4E2FF4DDB2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{24927F45-53D4-4237-AFC3-CE23D2F7A0DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24927F45-53D4-4237-AFC3-CE23D2F7A0DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24927F45-53D4-4237-AFC3-CE23D2F7A0DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7A898E1-8CB8-4859-BA02-3F4C0581CD03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A898E1-8CB8-4859-BA02-3F4C0581CD03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A898E1-8CB8-4859-BA02-3F4C0581CD03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A898E1-8CB8-4859-BA02-3F4C0581CD03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

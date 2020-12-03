@@ -8,16 +8,17 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class TaskBusiness : ITaskBusiness
     {
         #region Attributes
-        private readonly ILogger<Task> _logger;
+        private readonly ILogger<domain.paysimplex.Models.Task> _logger;
         private readonly ITaskRepository _taskRepository;
         #endregion Attributes
 
         #region Constructor
-        public TaskBusiness(ILogger<Task> logger, ITaskRepository taskRepository)
+        public TaskBusiness(ILogger<domain.paysimplex.Models.Task> logger, ITaskRepository taskRepository)
         {
             _logger = logger;
             _taskRepository = taskRepository;
@@ -26,7 +27,7 @@
 
         #region Public Methods
 
-        public object Get()
+        public async Task<object> Get()
         {
             try
             {
@@ -44,7 +45,7 @@
             }
         }
 
-        public object GetById(long id)
+        public async Task<object> GetById(long id)
         {
             try
             {
@@ -61,7 +62,7 @@
             }
         }
 
-        public object GetByName(string name)
+        public async Task<object> GetByName(string name)
         {
             try
             {
@@ -78,7 +79,7 @@
             }
         }
 
-        public object Save(Task obj, long idUser)
+        public async Task<object> Save(domain.paysimplex.Models.Task obj, long idUser)
         {
             try
             {
@@ -93,7 +94,7 @@
             }
         }
 
-        public object Update(Task obj, long idUser)
+        public async Task<object> Update(domain.paysimplex.Models.Task obj, long idUser)
         {
             try
             {
@@ -108,7 +109,7 @@
             }
         }
 
-        public object Delete(Task obj)
+        public async Task<object> Delete(domain.paysimplex.Models.Task obj)
         {
             try
             {

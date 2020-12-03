@@ -7,6 +7,7 @@
     using Microsoft.Extensions.Logging;
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class UserBusiness : IUserBusiness
     {
@@ -29,7 +30,7 @@
 
         #region Public Methods
 
-        public object Get()
+        public async Task<object> Get()
         {
             try
             {
@@ -47,7 +48,7 @@
             }
         }
 
-        public object GetById(long id)
+        public async Task<object> GetById(long id)
         {
             try
             {
@@ -64,7 +65,7 @@
             }
         }
 
-        public object GetByName(string name)
+        public async Task<object> GetByName(string name)
         {
             try
             {
@@ -81,7 +82,7 @@
             }
         }
 
-        public object Save(User obj, long idUser)
+        public async Task<object> Save(User obj, long idUser)
         {
             try
             {
@@ -96,7 +97,7 @@
             }
         }
 
-        public object Update(User obj, long idUser)
+        public async Task<object> Update(User obj, long idUser)
         {
             try
             {
@@ -111,7 +112,7 @@
             }
         }
 
-        public object Delete(User obj)
+        public async Task<object> Delete(User obj)
         {
             try
             {
