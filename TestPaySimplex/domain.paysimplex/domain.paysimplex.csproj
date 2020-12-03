@@ -5,13 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Business\" />
     <Folder Include="Configurations\" />
-    <Folder Include="Contracts\" />
-    <Folder Include="Enums\" />
-    <Folder Include="Models\" />
     <Folder Include="Security\" />
-    <Folder Include="Utilities\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\data.paysimplex\data.paysimplex.csproj" />
   </ItemGroup>
 
 </Project>
