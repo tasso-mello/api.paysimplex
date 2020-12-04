@@ -42,7 +42,7 @@
         [HttpGet("All")]
         public async Task<IActionResult> Get()
         {
-            var result = _userBusiness.Get();
+            var result = await _userBusiness.Get();
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -60,7 +60,7 @@
         [HttpGet()]
         public async Task<IActionResult> Get([FromQuery] long id)
         {
-            var result = _userBusiness.GetById(id);
+            var result = await _userBusiness.GetById(id);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -78,7 +78,7 @@
         [HttpGet("{name}")]
         public async Task<IActionResult> Get(string name)
         {
-            var result = _userBusiness.GetByName(name);
+            var result = await _userBusiness.GetByName(name);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -97,7 +97,7 @@
         [HttpPost("{idUser}")]
         public async Task<IActionResult> Post(domain.paysimplex.Models.User User, long idUser)
         {
-            var result = _userBusiness.Save(User, idUser);
+            var result = await _userBusiness.Save(User, idUser);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -108,15 +108,15 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="User"></param>
+        /// <param name="user"></param>
         /// <param name="idUser"></param>
         /// <returns></returns>
         /// <response code="200">Register is edited</response>
         /// <response code="400">Error to try edit</response>
         [HttpPut("{idUser}")]
-        public async Task<IActionResult> Put(domain.paysimplex.Models.User User, long idUser)
+        public async Task<IActionResult> Put(domain.paysimplex.Models.User user, long idUser)
         {
-            var result = _userBusiness.Update(User, idUser);
+            var result = await _userBusiness.Update(user, idUser);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -127,19 +127,19 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="User"></param>
+        /// <param name="user"></param>
         /// <returns></returns>
         /// <response code="200">Register is deleted</response>
         /// <response code="400">Error to try delete</response>  
         [HttpDelete]
-        public async Task<IActionResult> Delete(domain.paysimplex.Models.User User)
+        public async Task<IActionResult> Delete(domain.paysimplex.Models.User user)
         {
-            var result = _userBusiness.Delete(User);
+            var result = await _userBusiness.Delete(user);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
             else
-                return await Delete(User);
+                return await Delete(user);
         }
 
         #endregion Public Methods

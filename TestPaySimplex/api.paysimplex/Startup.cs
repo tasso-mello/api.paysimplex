@@ -106,7 +106,7 @@ namespace api.paysimplex
 
             #endregion
 
-            #region swagger
+            #region Swagger
 
             services.AddSwaggerGen(c =>
             {
@@ -120,7 +120,8 @@ namespace api.paysimplex
 
             #endregion
 
-            #region json
+            #region Json
+
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

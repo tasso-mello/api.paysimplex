@@ -4,9 +4,11 @@
     using domain.paysimplex.Contracts.Business;
     using domain.paysimplex.Models;
     using domain.paysimplex.Utilities;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -79,7 +81,7 @@
             }
         }
 
-        public async Task<object> Save(domain.paysimplex.Models.Task obj, long idUser)
+        public async Task<object> Save(Models.Task obj, long idUser)
         {
             try
             {
@@ -94,7 +96,7 @@
             }
         }
 
-        public async Task<object> Update(domain.paysimplex.Models.Task obj, long idUser)
+        public async Task<object> Update(Models.Task obj, long idUser)
         {
             try
             {
@@ -109,12 +111,42 @@
             }
         }
 
-        public async Task<object> Delete(domain.paysimplex.Models.Task obj)
+        public async Task<object> Delete(Models.Task obj)
         {
             try
             {
                 _taskRepository.Delete(obj.ToEntityTask());
                 _taskRepository.SaveChanges();
+                return Messages.GenerateGenericSuccessObjectMessage("Task", "Sucesso", 200);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message ?? e.InnerException.Message, null);
+                return (e.Message != null && e?.InnerException?.Message != null) ? Messages.GenerateGenericErrorMessage(e.Message, e.InnerException.Message) : Messages.GenerateGenericErrorMessage(e.Message ?? e.InnerException.Message);
+            }
+        }
+
+        public async Task<object> AttachTaskFile(IFormFile file, long idTask, long idUser)
+        {
+            try
+            {
+                var base64File = string.Empty;
+
+                if (file.Length > 0)
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        base64File = Convert.ToBase64String(fileBytes);
+                    }
+
+                var taskToUpdate = _taskRepository.GetById(idTask);
+
+                taskToUpdate.FileBlob = base64File;
+
+                _taskRepository.Update(taskToUpdate, idUser);
+                _taskRepository.SaveChanges();
+
                 return Messages.GenerateGenericSuccessObjectMessage("Task", "Sucesso", 200);
             }
             catch (Exception e)

@@ -1,6 +1,7 @@
 ﻿namespace api.paysimplex.Controllers
 {
     using domain.paysimplex.Contracts.Business;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
 
@@ -59,7 +60,7 @@
         [HttpGet()]
         public async Task<IActionResult> Get([FromQuery] long id)
         {
-            var result = _taskBusiness.GetById(id);
+            var result = await _taskBusiness.GetById(id);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -77,7 +78,7 @@
         [HttpGet("{name}")]
         public async Task<IActionResult> Get(string name)
         {
-            var result = _taskBusiness.GetByName(name);
+            var result = await _taskBusiness.GetByName(name);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -96,7 +97,7 @@
         [HttpPost("{idUser}")]
         public async Task<IActionResult> Post(domain.paysimplex.Models.Task task, long idUser)
         {
-            var result = _taskBusiness.Save(task, idUser);
+            var result = await _taskBusiness.Save(task, idUser);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
@@ -115,13 +116,34 @@
         [HttpPut("{idUser}")]
         public async Task<IActionResult> Put(domain.paysimplex.Models.Task task, long idUser)
         {
-            var result = _taskBusiness.Update(task, idUser);
+            var result = await _taskBusiness.Update(task, idUser);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);
             else
                 return Ok(result);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="idTask"></param>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
+        /// <response code="200">Register is edited</response>
+        /// <response code="400">Error to try edit</response>
+        [HttpPut("{idTask}/{idUser}")]
+        public async Task<IActionResult> Put(IFormFile file, long idTask ,long idUser)
+        {
+            var result = await _taskBusiness.AttachTaskFile(file, idTask, idUser);
+
+            if (result.ToString().Contains("Error"))
+                return BadRequest(result);
+            else
+                return Ok(result);
+        }
+
 
         /// <summary>
         /// 
@@ -133,7 +155,7 @@
         [HttpDelete]
         public async Task<IActionResult> Delete(domain.paysimplex.Models.Task task)
         {
-            var result = _taskBusiness.Delete(task);
+            var result = await _taskBusiness.Delete(task);
 
             if (result.ToString().Contains("Error"))
                 return BadRequest(result);

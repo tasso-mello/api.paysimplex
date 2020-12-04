@@ -13,10 +13,10 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public int State { get; set; } = 1;
-        public DateTime? Start { get; set; } = DateTime.Today;
-        public DateTime? End { get; set; }
-        public string File { get; set; } //Blob
-
+        public DateTime? StartDate { get; set; } = DateTime.Today;
+        public DateTime? EndDate { get; set; }
+        public TimeSpan EstimatedTime { get; set; }
+        public string FileBlob { get; set; } //Blob
         [ForeignKey("User")]
         public long? UserId { get; set; }
         public virtual User User { get; set; }

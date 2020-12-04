@@ -61,6 +61,17 @@
             <response code="200">Register is edited</response>
             <response code="400">Error to try edit</response>
         </member>
+        <member name="M:api.paysimplex.Controllers.TaskController.Put(Microsoft.AspNetCore.Http.IFormFile,System.Int64,System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="file"></param>
+            <param name="idTask"></param>
+            <param name="idUser"></param>
+            <returns></returns>
+            <response code="200">Register is edited</response>
+            <response code="400">Error to try edit</response>
+        </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Delete(domain.paysimplex.Models.Task)">
             <summary>
             
@@ -121,7 +132,7 @@
             <summary>
             
             </summary>
-            <param name="User"></param>
+            <param name="user"></param>
             <param name="idUser"></param>
             <returns></returns>
             <response code="200">Register is edited</response>
@@ -131,7 +142,7 @@
             <summary>
             
             </summary>
-            <param name="User"></param>
+            <param name="user"></param>
             <returns></returns>
             <response code="200">Register is deleted</response>
             <response code="400">Error to try delete</response>  

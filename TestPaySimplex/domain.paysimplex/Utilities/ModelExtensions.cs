@@ -34,11 +34,11 @@
                 Id = task.Id,
                 Description = task.Description,
                 Title = task.Title,
-                Start = task.Start,
-                End = task.End,
+                Start = task.StartDate,
+                End = task.EndDate,
                 State = (State)task.State,
                 UserId = task.UserId,
-                File = task.File,
+                File = task.FileBlob,
                 User = task.User?.ToModelUser()
             };
         }
@@ -50,11 +50,11 @@
                 Id = task.Id,
                 Description = task.Description,
                 Title = task.Title,
-                Start = task.Start,
-                End = task.End,
+                StartDate = task.Start,
+                EndDate = task.End,
                 State = (int)task.State,
                 UserId = task.UserId,
-                File = task.File
+                FileBlob = task.File
             };
         }
         #endregion Task

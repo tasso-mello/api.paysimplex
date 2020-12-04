@@ -10,6 +10,7 @@
         public State State { get; set; } = State.Scheduled;
         public DateTime? Start { get; set; } = DateTime.Today;
         public DateTime? End { get; set; }
+        public TimeSpan EstimatedTime { get; set; }
         public string File { get; set; } //Blob
         public long? UserId { get; set; }
         public User User { get; set; }
