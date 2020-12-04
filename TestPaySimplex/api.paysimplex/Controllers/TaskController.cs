@@ -6,7 +6,7 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// 
+    ///     Task Business
     /// </summary>
     [ApiController]
     [Route("[controller]")]
@@ -34,11 +34,11 @@
         #region Public Methods
 
         /// <summary>
-        /// 
+        ///     List all tasks
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Json task list</returns>
         /// <response code="200">Json list</response>
-        /// <response code="400">Error to try get by name</response>  
+        /// <response code="400">Error to try get</response>  
         [HttpGet("All")]
         public async Task<IActionResult> Get()
         {
@@ -51,12 +51,12 @@
         }
 
         /// <summary>
-        /// 
+        ///     List task by identity
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Json object</response>
-        /// <response code="400">Error to try get by name</response>  
+        /// <response code="400">Error to try get by id</response>  
         [HttpGet()]
         public async Task<IActionResult> Get([FromQuery] long id)
         {
@@ -69,12 +69,12 @@
         }
 
         /// <summary>
-        /// 
+        ///     Get duration from task
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Json object</response>
-        /// <response code="400">Error to try get by name</response>  
+        /// <response code="400">Error to try get duration</response>  
         [HttpGet("Duration/{id}")]
         public async Task<IActionResult> GetDuration(long id)
         {
@@ -88,7 +88,7 @@
 
 
         /// <summary>
-        /// 
+        ///     Get task by name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -106,11 +106,11 @@
         }
 
         /// <summary>
-        /// 
+        ///     Insert Task
         /// </summary>
-        /// <param name="task"></param>
-        /// <param name="idUser"></param>
-        /// <returns></returns>
+        /// <param name="task">Json Task object</param>
+        /// <param name="idUser">User insert</param>
+        /// <returns>Json message</returns>
         /// <response code="201">Register is created</response>
         /// <response code="400">Error to try create</response>  
         [HttpPost("{idUser}")]
@@ -125,11 +125,11 @@
         }
 
         /// <summary>
-        /// 
+        ///     Update Task
         /// </summary>
-        /// <param name="task"></param>
-        /// <param name="idUser"></param>
-        /// <returns></returns>
+        /// <param name="task">Json Task object</param>
+        /// <param name="idUser">User update</param>
+        /// <returns>Json message</returns>
         /// <response code="200">Register is edited</response>
         /// <response code="400">Error to try edit</response>
         [HttpPut("{idUser}")]
@@ -144,12 +144,12 @@
         }
 
         /// <summary>
-        /// 
+        ///     Attach file to Task
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="idTask"></param>
-        /// <param name="idUser"></param>
-        /// <returns></returns>
+        /// <param name="file">File</param>
+        /// <param name="idTask">Task Id</param>
+        /// <param name="idUser">User Id update</param>
+        /// <returns>Json message</returns>
         /// <response code="200">Register is edited</response>
         /// <response code="400">Error to try edit</response>
         [HttpPut("{idTask}/{idUser}")]
@@ -165,10 +165,10 @@
 
 
         /// <summary>
-        /// 
+        ///     Delete Task
         /// </summary>
-        /// <param name="task"></param>
-        /// <returns></returns>
+        /// <param name="task">Json Task object</param>
+        /// <returns>Json message</returns>
         /// <response code="200">Register is deleted</response>
         /// <response code="400">Error to try delete</response>  
         [HttpDelete]

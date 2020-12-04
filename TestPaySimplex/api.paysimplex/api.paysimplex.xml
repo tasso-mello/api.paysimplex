@@ -6,7 +6,7 @@
     <members>
         <member name="T:api.paysimplex.Controllers.TaskController">
             <summary>
-            
+                Task Business
             </summary>
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.#ctor(domain.paysimplex.Contracts.Business.ITaskBusiness)">
@@ -17,33 +17,33 @@
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Get">
             <summary>
-            
+                List all tasks
             </summary>
-            <returns></returns>
+            <returns>Json task list</returns>
             <response code="200">Json list</response>
-            <response code="400">Error to try get by name</response>  
+            <response code="400">Error to try get</response>  
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Get(System.Int64)">
             <summary>
-            
+                List task by identity
             </summary>
             <param name="id"></param>
             <returns></returns>
             <response code="200">Json object</response>
-            <response code="400">Error to try get by name</response>  
+            <response code="400">Error to try get by id</response>  
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.GetDuration(System.Int64)">
             <summary>
-            
+                Get duration from task
             </summary>
             <param name="id"></param>
             <returns></returns>
             <response code="200">Json object</response>
-            <response code="400">Error to try get by name</response>  
+            <response code="400">Error to try get duration</response>  
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Get(System.String)">
             <summary>
-            
+                Get task by name
             </summary>
             <param name="name"></param>
             <returns></returns>
@@ -52,41 +52,41 @@
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Post(domain.paysimplex.Models.Task,System.Int64)">
             <summary>
-            
+                Insert Task
             </summary>
-            <param name="task"></param>
-            <param name="idUser"></param>
-            <returns></returns>
+            <param name="task">Json Task object</param>
+            <param name="idUser">User insert</param>
+            <returns>Json message</returns>
             <response code="201">Register is created</response>
             <response code="400">Error to try create</response>  
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Put(domain.paysimplex.Models.Task,System.Int64)">
             <summary>
-            
+                Update Task
             </summary>
-            <param name="task"></param>
-            <param name="idUser"></param>
-            <returns></returns>
+            <param name="task">Json Task object</param>
+            <param name="idUser">User update</param>
+            <returns>Json message</returns>
             <response code="200">Register is edited</response>
             <response code="400">Error to try edit</response>
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Put(Microsoft.AspNetCore.Http.IFormFile,System.Int64,System.Int64)">
             <summary>
-            
+                Attach file to Task
             </summary>
-            <param name="file"></param>
-            <param name="idTask"></param>
-            <param name="idUser"></param>
-            <returns></returns>
+            <param name="file">File</param>
+            <param name="idTask">Task Id</param>
+            <param name="idUser">User Id update</param>
+            <returns>Json message</returns>
             <response code="200">Register is edited</response>
             <response code="400">Error to try edit</response>
         </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Delete(domain.paysimplex.Models.Task)">
             <summary>
-            
+                Delete Task
             </summary>
-            <param name="task"></param>
-            <returns></returns>
+            <param name="task">Json Task object</param>
+            <returns>Json message</returns>
             <response code="200">Register is deleted</response>
             <response code="400">Error to try delete</response>  
         </member>
