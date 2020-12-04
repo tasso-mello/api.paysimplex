@@ -1,6 +1,8 @@
 ﻿namespace domain.paysimplex.Models
 {
-    public class User
+    using domain.paysimplex.Models.Base;
+
+    public class User: BaseModel
     {
         public long Id { get; set; }
         public string Login { get; set; }

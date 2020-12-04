@@ -33,12 +33,14 @@ namespace data.paysimplex.Infrastructure
 		{
 			dbSet.Add(entity);
 			OnBeforeSaving(idUser);
+			SaveChanges();
 		}
 
 		public virtual void AddAll(IEnumerable<T> entities, long idUser)
 		{
 			dbSet.AddRange(entities);
 			OnBeforeSaving(idUser);
+			SaveChanges();
 		}
 
 		public virtual void Update(T entity, long idUser)
@@ -46,6 +48,7 @@ namespace data.paysimplex.Infrastructure
 			dbSet.Attach(entity);
 			dataContext.Entry(entity).State = EntityState.Modified;
 			OnBeforeSaving(idUser);
+			SaveChanges();
 		}
 
 		public virtual void UpdateAll(IEnumerable<T> entities, long idUser)
@@ -54,12 +57,14 @@ namespace data.paysimplex.Infrastructure
 			foreach (var entity in entities)
 				dataContext.Entry(entity).State = EntityState.Modified;
 			OnBeforeSaving(idUser);
+			SaveChanges();
 		}
 
 		public virtual void Delete(T entity)
 		{
 			dbSet.Remove(entity);
 			dataContext.Entry(entity).State = EntityState.Deleted;
+			SaveChanges();
 		}
 
 		public virtual void Delete(Expression<Func<T, bool>> where)
@@ -69,6 +74,8 @@ namespace data.paysimplex.Infrastructure
 			{
 				Delete(obj);
 			}
+
+			SaveChanges();
 		}
 
 		public bool Exists(Expression<Func<T, bool>> where)

@@ -1,8 +1,9 @@
 ﻿namespace domain.paysimplex.Models
 {
     using domain.paysimplex.Enums;
+    using domain.paysimplex.Models.Base;
     using System;
-    public class Task
+    public class Task : BaseModel
     {
         public long Id { get; set; }
         public string Title { get; set; }

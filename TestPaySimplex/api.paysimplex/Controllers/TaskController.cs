@@ -71,6 +71,25 @@
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Json object</response>
+        /// <response code="400">Error to try get by name</response>  
+        [HttpGet("Duration/{id}")]
+        public async Task<IActionResult> GetDuration(long id)
+        {
+            var result = await _taskBusiness.GetDuration(id);
+
+            if (result.ToString().Contains("Error"))
+                return BadRequest(result);
+            else
+                return Ok(result);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         /// <response code="200">Json object</response>

@@ -33,7 +33,7 @@
         {
             try
             {
-                return Messages.GenerateGenericSuccessObjectMessage("Task", _taskRepository.GetAll(GetUserIncludes()).Select(e => e.ToModelTask()), 200);
+                return Messages.GenerateGenericSuccessObjectMessage("Task", _taskRepository.GetAll(GetUserIncludes()).Select(e => e.ToModelTask().ToViewModelTask()), 200);
             }
             catch (NullReferenceException e)
             {
@@ -51,7 +51,7 @@
         {
             try
             {
-                return Messages.GenerateGenericSuccessObjectMessage("Task", _taskRepository.Get(p => p.Id == id, GetUserIncludes()).ToModelTask(), 200);
+                return Messages.GenerateGenericSuccessObjectMessage("Task", _taskRepository.Get(p => p.Id == id, GetUserIncludes()).ToModelTask().ToViewModelTask(), 200);
             }
             catch (NullReferenceException)
             {
@@ -68,7 +68,7 @@
         {
             try
             {
-                return Messages.GenerateGenericSuccessObjectMessage("Task", _taskRepository.GetMany(e => e.Title.Contains(name), GetUserIncludes()).Select(e => e.ToModelTask()), 200);
+                return Messages.GenerateGenericSuccessObjectMessage("Task", _taskRepository.GetMany(e => e.Title.Contains(name), GetUserIncludes()).Select(e => e.ToModelTask().ToViewModelTask()), 200);
             }
             catch (NullReferenceException)
             {
@@ -81,12 +81,37 @@
             }
         }
 
+        public async Task<object> GetDuration(long id)
+        {
+            try
+            {
+                return Messages.GenerateGenericSuccessObjectMessage("Duration", ToDuration(_taskRepository.GetById(id).ToModelTask()), 200);
+            }
+            catch (NullReferenceException e)
+            {
+                _logger.LogError(e.Message ?? e.InnerException.Message, null);
+                return Messages.GenerateGenericNullErrorMessage("Task", "O registro não existe.");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message ?? e.InnerException.Message, null);
+                return (e.Message != null && e?.InnerException?.Message != null) ? Messages.GenerateGenericErrorMessage(e.Message, e.InnerException.Message) : Messages.GenerateGenericErrorMessage(e.Message ?? e.InnerException.Message);
+            }
+        }
+
+        private double ToDuration(Models.Task task)
+        {
+            if (task.End != null)
+                return task.End.Value.Subtract(task.Start.Value).TotalDays;
+            else
+                return DateTime.Today.Subtract(task.Start.Value).TotalDays;
+        }
+
         public async Task<object> Save(Models.Task obj, long idUser)
         {
             try
             {
                 _taskRepository.Add(obj.ToEntityTask(), idUser);
-                _taskRepository.SaveChanges();
                 return Messages.GenerateGenericSuccessObjectMessage("Task", "Sucesso", 201);
             }
             catch (Exception e)
@@ -100,8 +125,10 @@
         {
             try
             {
+                if (obj.State == Enums.State.Done)
+                    obj.End = DateTime.Today;
+
                 _taskRepository.Update(obj.ToEntityTask(), idUser);
-                _taskRepository.SaveChanges();
                 return Messages.GenerateGenericSuccessObjectMessage("Task", "Sucesso", 200);
             }
             catch (Exception e)
@@ -116,7 +143,6 @@
             try
             {
                 _taskRepository.Delete(obj.ToEntityTask());
-                _taskRepository.SaveChanges();
                 return Messages.GenerateGenericSuccessObjectMessage("Task", "Sucesso", 200);
             }
             catch (Exception e)
@@ -141,11 +167,8 @@
                     }
 
                 var taskToUpdate = _taskRepository.GetById(idTask);
-
                 taskToUpdate.FileBlob = base64File;
-
                 _taskRepository.Update(taskToUpdate, idUser);
-                _taskRepository.SaveChanges();
 
                 return Messages.GenerateGenericSuccessObjectMessage("Task", "Sucesso", 200);
             }

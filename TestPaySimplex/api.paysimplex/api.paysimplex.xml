@@ -32,6 +32,15 @@
             <response code="200">Json object</response>
             <response code="400">Error to try get by name</response>  
         </member>
+        <member name="M:api.paysimplex.Controllers.TaskController.GetDuration(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Json object</response>
+            <response code="400">Error to try get by name</response>  
+        </member>
         <member name="M:api.paysimplex.Controllers.TaskController.Get(System.String)">
             <summary>
             
